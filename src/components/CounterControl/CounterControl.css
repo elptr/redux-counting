@@ -1,4 +1,5 @@
 .CounterControl {
+    user-select: none;
     width: 150px;
     padding: 20px;
     box-sizing: border-box;
