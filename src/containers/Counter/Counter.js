@@ -35,7 +35,7 @@ class Counter extends Component {
                 <CounterControl label="Decrement" clicked={this.props.onDecrementCounter}  />
                 <CounterControl label="Add 5" clicked={this.props.onAddCounter}  />
                 <CounterControl label="Subtract 5" clicked={this.props.onSubtractCounter}  />
-                <button onClick={this.props.onStoreResult}>Store Result</button>
+                <button onClick={() => this.props.onStoreResult(this.props.ctr)}>Store Result</button>
                 <ul>
                     {this.props.storedResults.map((storedResult =>
                         <li key = {storedResult.id}
@@ -53,8 +53,8 @@ class Counter extends Component {
 
 const mapStateToProps = state =>{
     return {
-        ctr: state.counter,
-        storedResults: state.results
+        ctr: state.ctr.counter,
+        storedResults: state.res.results
     }
 }
 const mapDispatchToProps = dispatch => {
@@ -63,7 +63,7 @@ const mapDispatchToProps = dispatch => {
         onDecrementCounter: () => dispatch({type:actionTypes.DECREMENT}),
         onAddCounter: () => dispatch({type:actionTypes.ADD, val:5}),
         onSubtractCounter: () => dispatch({type:actionTypes.SUBTRACT, val:5}),
-        onStoreResult: ()=>dispatch({type:actionTypes.STORE_RESULT}),
+        onStoreResult: (result)=>dispatch({type:actionTypes.STORE_RESULT, result:result}),
         onDeleteResult: (id)=>dispatch({type:actionTypes.DELETE_RESULT, resultElId:id}),
         //id any name, and to receive it you need to pass it in <li onClick={this.props.onDeleteResult}>
     }
