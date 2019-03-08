@@ -32,11 +32,18 @@ export const subtract = (value) => {
     };
 };
 
-export const storeResult = (res) => {
+export const saveResult = (res) => {
     return {
         type: STORE_RESULT,
         result:res
     };
+}
+export const storeResult = (res) => {
+    return dispatch => { // simulating asynchronous reaching server, won't work without thunk
+        setTimeout(() => { // simulating asynchronous reaching server, won't work without thunk
+            dispatch(saveResult(res)) //create const saveResult to avoid infinitive loop
+        }, 2000)
+    }
 };
 
 export const deleteResult = (resElId) => {
