@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import { updateObject } from '../utility';
 
 const initialState = {
     results:[]
@@ -11,12 +12,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.STORE_RESULT:
             //Change data, add logic here or in actions/result
             // it can be done in both way, more logical to put logic in reducer
-            return {
-                ...state,
-                results: state.results.concat({id: new Date(), value:action.result}), //* 3 add logic here or in actions/result
-                //not push, because push change original arr
+            return updateObject(state, {results: state.results.concat({id: new Date(), value:action.result})});
 
-            }
         case 'DELETE_RESULT':
             // //First way of copy array immutable
             // const id=2; //index  //state.result.splice(id, 1); //mutates original array
@@ -36,11 +33,9 @@ const reducer = (state = initialState, action) => {
             // // we have id in {id: new Date(), value:state.counter}, not index, so we don't need index,
             // // only check for id, that comes from payload
             const updatedArray = state.results.filter(result => result.id !== action.resultElId);
-            return {
-                ...state,
-                results: updatedArray
 
-            }
+            return updateObject(state, {results: updatedArray});
+
 
     }
 

@@ -3,7 +3,6 @@ import * as actionTypes from "./actionTypes";
 
 
 
-
 export const saveResult = (res) => {
     // const updatedResult = res * 2; //* 2 add logic here or in reducers/result
     // it can be done in both way, more logical to put logic in reducer
@@ -23,6 +22,7 @@ export const storeResult = (res) => {
 };
 
 export const deleteResult = (resElId) => {
+
     return {
         type: actionTypes.DELETE_RESULT,
         resultElId:resElId
