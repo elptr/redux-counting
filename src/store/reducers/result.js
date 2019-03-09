@@ -9,9 +9,11 @@ const reducer = (state = initialState, action) => {
 
     switch(action.type){
         case actionTypes.STORE_RESULT:
+            //Change data, add logic here or in actions/result
+            // it can be done in both way, more logical to put logic in reducer
             return {
                 ...state,
-                results: state.results.concat({id: new Date(), value:action.result}),
+                results: state.results.concat({id: new Date(), value:action.result}), //* 3 add logic here or in actions/result
                 //not push, because push change original arr
 
             }

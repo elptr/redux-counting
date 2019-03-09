@@ -38,7 +38,7 @@ class Counter extends Component {
                 <button onClick={() => this.props.onStoreResult(this.props.ctr)}>Store Result</button>
                 <ul>
                     {this.props.storedResults.map((storedResult =>
-                        <li key = {storedResult.id}
+                        <li style={{listStyle: 'none'}} key = {storedResult.id}
                             // onClick={this.props.onDeleteResult}> passing id to it
                             onClick={() => this.props.onDeleteResult(storedResult.id)}>
                             {storedResult.value}
